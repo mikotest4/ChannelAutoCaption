@@ -1,29 +1,47 @@
+import ntplib
+from time import ctime
+import os
+import time
+
+# Time sync block to avoid msg_id too low error
+def sync_time():
+    try:
+        client = ntplib.NTPClient()
+        response = client.request('pool.ntp.org')
+        os.environ['TZ'] = 'UTC'
+        time.tzset()
+        print("Time synced:", ctime(response.tx_time))
+    except Exception as e:
+        print("Failed to sync time:", e)
+
+sync_time()
+
 import pyrogram
 
 import logging
 logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
 import os
 
 from config import Config
-from pyrogram import Client 
+from pyrogram import Client 
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 class autocaption(Client):
-    
-    def __init__(self):
-        super().__init__(
-            session_name="Captioner",
-            bot_token = Config.BOT_TOKEN,
-            api_id = Config.API_ID,
-            api_hash = Config.API_HASH,
-            workers = 20,
-            plugins = dict(
-                root="plugins"
-            )
-        )
+    
+    def __init__(self):
+        super().__init__(
+            session_name="Captioner",
+            bot_token = Config.BOT_TOKEN,
+            api_id = Config.API_ID,
+            api_hash = Config.API_HASH,
+            workers = 20,
+            plugins = dict(
+                root="plugins"
+            )
+        )
 
 if __name__ == "__main__" :
-    autocaption().run()
+    autocaption().run()
