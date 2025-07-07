@@ -24,3 +24,14 @@ if __name__ == "__main__":
         )
     )
     app.run()
+
+
+@app.on_message(filters.command("start") & filters.private)
+async def start(client: Client, message: Message):
+    await message.reply_text(
+        "**👋 Welcome!**\n\n"
+        "I'm a bot that auto locks/unlocks media in groups based on a timer.\n\n"
+        "➕ Add me to your group and give admin rights.\n"
+        "📍 Use /help to set it up.",
+        quote=True
+    )
