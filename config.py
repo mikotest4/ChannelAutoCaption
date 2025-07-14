@@ -1,7 +1,7 @@
 import os
 
 class Config(object):
-    BOT_TOKEN = os.environ.get("BOT_TOKEN", "")
-    API_ID = int(os.environ.get("API_ID", 29245477))
-    API_HASH = os.environ.get("API_HASH", "0abc83883262245c90ca337b7a0375c4")
-    DB_URL = os.environ.get("DATABASE_URL", "postgresql://neondb_owner:npg_XbwV4SzKFn7G@ep-steep-feather-a8wgninx-pooler.eastus2.azure.neon.tech/neondb")
+    BOT_TOKEN = os.environ.get("BOT_TOKEN", "7819249411:AAESmQV0hlmNqyakQEAXfZzt-Jiu4WTgLTw")
+    API_ID = int(os.environ.get("API_ID", "27704224"))
+    API_HASH = os.environ.get("API_HASH", "c2e33826d757fe113bc154fcfabc987d")
+    DB_URL = os.environ.get("DATABASE_URL", "mongodb+srv://Koi:aloksingh@cluster0.86wo9.mongodb.net/?retryWrites=true&w=majority")
